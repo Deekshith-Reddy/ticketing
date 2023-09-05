@@ -8,14 +8,16 @@ import Login from './Login'
 import ForgotPassword from './ForgotPassword'
 import UpdateProfile from './UpdateProfile'
 import SubmitTicket from './SubmitTicket'
+import TicketViewer from './TicketViewer'
+import ErrComponent from './ErrComponent'
 
 function App() {
 
 
   return (
-    <Container className='d-flex align-items-center justify-content-center'
+    <Container className=' align-items-center'
       style={{ minHeight: "100vh" }}>
-      <div className='w-100' style={{ maxWidth: "400px" }}>
+      <div className='w-100' >
         <Router>
           <AuthProvider>
             <Routes>
@@ -25,6 +27,9 @@ function App() {
               <Route path='/signup' Component={Signup}></Route>
               <Route path='/login' Component={Login}></Route>
               <Route path='/forgot-password' Component={ForgotPassword}></Route>
+              <Route path='/ticket-viewer/:id' Component={TicketViewer}></Route>
+
+              <Route path="*" Component={ErrComponent}></Route>
             </Routes>
 
           </AuthProvider>

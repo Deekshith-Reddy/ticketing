@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import { Card, Form, Button, Alert, Dropdown } from 'react-bootstrap'
 import { db } from '../firebase'
-import { addDoc, collection, getDocs } from "firebase/firestore"
+import { addDoc, collection, serverTimestamp } from "firebase/firestore"
 
 export default function SubmitTicket() {
 
@@ -31,6 +31,7 @@ export default function SubmitTicket() {
                 email: emailRef.current.value,
                 title: titleRef.current.value,
                 description: descriptionRef.current.value,
+                Timestamp: serverTimestamp(),
                 StaffUserId: "",
                 Status: "Not Assigned"
             })
