@@ -2,7 +2,7 @@ import { AuthProvider } from '../contexts/AuthContext'
 import './App.css'
 import Signup from './Signup'
 import { Container } from 'react-bootstrap'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Dashboard from './Dashboard'
 import Login from './Login'
 import ForgotPassword from './ForgotPassword'
@@ -18,6 +18,7 @@ function App() {
     <Container className=' align-items-center'
       style={{ minHeight: "100vh" }}>
       <div className='w-100' >
+        <a href="/">Home</a>
         <Router>
           <AuthProvider>
             <Routes>
@@ -34,6 +35,7 @@ function App() {
 
           </AuthProvider>
         </Router>
+
       </div>
     </Container>
 

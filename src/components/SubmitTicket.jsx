@@ -25,7 +25,7 @@ export default function SubmitTicket() {
             setError('')
             setLoading(true)
 
-            console.log(emailRef.current.value)
+            // console.log(emailRef.current.value)
 
             const docRef = await addDoc(collection(db, "tickets"), {
                 email: emailRef.current.value,

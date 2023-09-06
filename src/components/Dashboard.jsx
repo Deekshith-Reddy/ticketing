@@ -16,7 +16,9 @@ export default function Dashboard() {
     const navigate = useNavigate()
 
     const filterTickets = (data) => {
-        //console.log(currentUser.uid === data[0].userId)
+
+        if (currentUser === null) return []
+
         const temp = data.filter((item) => {
             return currentUser.uid === item.userId
         })

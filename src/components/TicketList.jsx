@@ -16,7 +16,7 @@ export default function TicketList({ tickets, title, loading }) {
                 Loading...
             </> :
 
-            <div className='col'>
+            tickets.length !== 0 ? <div className='col'>
                 <h2 className='text-center mt-4'>{title}</h2>
                 {tickets.map((ticket) => (
                     <div key={ticket.id} className='row border p-3'>
@@ -27,7 +27,7 @@ export default function TicketList({ tickets, title, loading }) {
                         <p className="col-sm">Status: {ticket.status}</p>
                     </div>
                 ))}
-            </div>
+            </div> : <></>
         }
         </>
     )
