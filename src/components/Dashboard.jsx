@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Card, Button, Alert } from 'react-bootstrap'
+import React, { useEffect, useRef, useState } from 'react'
+import { Card, Button, Alert, Form } from 'react-bootstrap'
 import { useAuth } from '../contexts/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
 import { collection, onSnapshot } from 'firebase/firestore'
@@ -14,6 +14,7 @@ export default function Dashboard() {
     const [loading, setLoading] = useState(false)
     const [assignedTickets, setAssignedTickets] = useState([])
     const navigate = useNavigate()
+    const trackingNumRef = useRef()
 
     const filterTickets = (data) => {
 
@@ -57,6 +58,12 @@ export default function Dashboard() {
         }
     }
 
+    const handleTrackClick = (e) => {
+        e.preventDefault()
+
+        navigate(`/ticket-status/${trackingNumRef.current.value}`)
+    }
+
 
 
     return (
@@ -88,6 +95,10 @@ export default function Dashboard() {
 
                     <p>A User?</p>
                     <Link to='/submit-ticket' className='btn btn-primary w-100 mt-3'>Submit a Ticket</Link>
+                    <Form>
+                        <input type="text" placeholder='Enter Tracking Number' ref={trackingNumRef} />
+                        <Button variant='link' onClick={handleTrackClick}>Track</Button>
+                    </Form>
 
                 </>}
         </>

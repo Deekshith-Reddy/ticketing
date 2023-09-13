@@ -10,6 +10,8 @@ import UpdateProfile from './UpdateProfile'
 import SubmitTicket from './SubmitTicket'
 import TicketViewer from './TicketViewer'
 import ErrComponent from './ErrComponent'
+import TicketStatus from './TicketStatus'
+
 
 function App() {
 
@@ -18,7 +20,7 @@ function App() {
     <Container className=' align-items-center'
       style={{ minHeight: "100vh" }}>
       <div className='w-100' >
-        <a href="/">Home</a>
+        <a href="/">Ticketing</a>
         <Router>
           <AuthProvider>
             <Routes>
@@ -29,6 +31,7 @@ function App() {
               <Route path='/login' Component={Login}></Route>
               <Route path='/forgot-password' Component={ForgotPassword}></Route>
               <Route path='/ticket-viewer/:id' Component={TicketViewer}></Route>
+              <Route path='/ticket-status/:id' Component={TicketStatus}></Route>
 
               <Route path="*" Component={ErrComponent}></Route>
             </Routes>

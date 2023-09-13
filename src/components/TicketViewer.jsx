@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { onSnapshot, doc, setDoc } from 'firebase/firestore'
 import { db } from '../firebase'
 import { useAuth } from '../contexts/AuthContext'
 import { Link } from 'react-router-dom'
 import { Form, Button, Alert } from 'react-bootstrap'
+
 
 export default function TicketViewer() {
 
@@ -15,8 +16,13 @@ export default function TicketViewer() {
     const { currentUser } = useAuth()
     const currentStatusValue = useRef()
     const [updateMessage, setUpdateMessage] = useState('')
+    const navigate = useNavigate()
 
     useEffect(() => {
+
+        if (!currentUser) {
+            navigate('/')
+        }
 
         setLoading(true)
         const unsubscribe = onSnapshot(doc(db, "tickets", id), (doc) => {
@@ -34,6 +40,7 @@ export default function TicketViewer() {
             setCreated(formatTimestamp(doc.data().Timestamp,))
 
             setTicketData(data)
+
 
 
         })
