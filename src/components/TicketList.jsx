@@ -24,7 +24,7 @@ export default function TicketList({ tickets, title, loading }) {
                         <p className='col-sm'>Email: {ticket.email}</p>
                         <p className='col-sm'>Title: {ticket.title}</p>
                         <p className='col-sm'>Created At: {formatTimestamp(ticket.timestamp)}</p>
-                        <p className="col-sm">Status: {ticket.status}</p>
+                        <p className={`col-sm }`}>Status: <span className={`${ticket.status === 'Resolved' ? "text-success" : ticket.status == 'In Progress' ? "text-primary" : ticket.status == 'Not Assigned' ? "text-danger" : "text-dark"}`}>{ticket.status}</span></p>
                     </div>
                 ))}
             </div> : <></>

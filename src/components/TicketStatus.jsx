@@ -63,7 +63,11 @@ export default function TicketStatus() {
                     <p className='col-sm'>Email: {ticketData.email}</p>
                     <p className='col-sm'>Title: {ticketData.title}</p>
                     <p className='col-sm'>Description: {ticketData.description}</p>
-                    <p className='col-sm'>Status: {ticketData.Status}</p>
+                    <p className='col-sm'>Status:
+                        <span className={`p-2 rounded ${ticketData.Status === 'Resolved' ? "bg-success" : ticketData.Status === 'In Progress' ? "bg-primary" : ticketData.Status === 'Not Assigned' ? "bg-danger" : "bg-secondary"}`}>
+                            {ticketData.Status}
+                        </span>
+                    </p>
                     <p className='col-sm'>Assigned To: {ticketData.StaffUserId ? ticketData.StaffUserId : 'NA'}</p>
 
                     {created && <p className='col-sm'>Created At: {created}</p>}

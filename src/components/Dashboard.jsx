@@ -89,16 +89,19 @@ export default function Dashboard() {
                     </div>
                 </>
                 : <>
-                    <p>Staff? Currently Not Logged In.</p>
-                    <Link to='/login' className='btn btn-primary w-100 mt-3'>Log In</Link>
-                    <Link to='/signup' className='btn btn-primary w-100 mt-3'>Sign Up</Link>
+                    <div className='login-container'>
+                        <p className='mt-5' >Staff? Currently Not Logged In.</p>
+                        <Link to='/login' className='btn btn-primary w-100 mt-3'>Log In</Link>
+                        <Link to='/signup' className='btn btn-primary w-100 mt-3'>Sign Up</Link>
 
-                    <p>A User?</p>
-                    <Link to='/submit-ticket' className='btn btn-primary w-100 mt-3'>Submit a Ticket</Link>
-                    <Form>
-                        <input type="text" placeholder='Enter Tracking Number' ref={trackingNumRef} />
-                        <Button variant='link' onClick={handleTrackClick}>Track</Button>
-                    </Form>
+                        <p className='mt-5'>A User?</p>
+                        <Link to='/submit-ticket' className='btn btn-primary w-100 mt-3'>Create a Ticket</Link>
+                        <Form className='mt-3'>
+                            <input type="text" placeholder='Enter Tracking Number' ref={trackingNumRef} />
+                            <Button variant='link' onClick={handleTrackClick}>Track</Button>
+                        </Form>
+
+                    </div>
 
                 </>}
         </>

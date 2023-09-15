@@ -20,7 +20,7 @@ function App() {
     <Container className=' align-items-center'
       style={{ minHeight: "100vh" }}>
       <div className='w-100' >
-        <a href="/">Ticketing</a>
+        <h2 className='title text-center mb-5'><a href="/">Ticketing</a></h2>
         <Router>
           <AuthProvider>
             <Routes>

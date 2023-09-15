@@ -92,7 +92,11 @@ export default function TicketViewer() {
                 {(currentUser.uid === ticketData.StaffUserId || ticketData.StaffUserId === '') ?
                     <>
                         {!loading && ticketData && <div className='mt-5'>
-                            TicketViewer @ {id}
+                            <div className='d-flex flex-row justify-content-around'>
+                                <p className='col-sm'>TicketViewer @ {id}</p>
+                                <Link className='col-sm' to='/'>View All Tickets</Link>
+
+                            </div>
 
                             {updateMessage && <><Alert variant='success'>{updateMessage}</Alert></>}
                             <div key={ticketData.id} className='border p-3'>
@@ -101,9 +105,14 @@ export default function TicketViewer() {
                                 <p className='col-sm'>Title: {ticketData.title}</p>
                                 <p className='col-sm'>Description: {ticketData.description}</p>
                                 {/* <p className='col-sm'>Status: {ticketData.status}</p> Modifiable */}
+                                <p className='col-sm'>Current Status:
+                                    <span className={`p-2 rounded ${ticketData.Status === 'Resolved' ? "bg-success" : ticketData.Status === 'In Progress' ? "bg-primary" : ticketData.Status === 'Not Assigned' ? "bg-danger" : "bg-secondary"}`}>
+                                        {ticketData.Status}
+                                    </span>
+                                </p>
                                 <Form onSubmit={handleSubmit}>
-                                    <label htmlFor="Status">Status: </label>
-                                    <select className='mr-3' name="name" id="id" ref={currentStatusValue}>
+                                    <label htmlFor="Status">Change Status to: </label>
+                                    <select className='m-2' name="name" id="id" ref={currentStatusValue}>
                                         <option key={1} value="Assigned">Assigned</option>
                                         <option key={2} value="In Progress">In Progress</option>
                                         <option key={3} value="Resolved">Resolved</option>
@@ -129,7 +138,11 @@ export default function TicketViewer() {
                                 <p className='col-sm'>Email: {ticketData.email}</p>
                                 <p className='col-sm'>Title: {ticketData.title}</p>
                                 <p className='col-sm'>Description: {ticketData.description}</p>
-                                <p className='col-sm'>Status: {ticketData.Status}</p>
+                                <p className='col-sm'>Status:
+                                    <span className={`p-2 rounded ${ticketData.Status === 'Resolved' ? "bg-success" : ticketData.Status === 'In Progress' ? "bg-primary" : ticketData.Status === 'Not Assigned' ? "bg-danger" : "bg-secondary"}`}>
+                                        {ticketData.Status}
+                                    </span>
+                                </p>
                                 <p className='col-sm'>Assigned To: {ticketData.StaffUserId ? ticketData.StaffUserId : 'NA'}</p>
 
                                 {created && <p className='col-sm'>Created At: {created}</p>}
