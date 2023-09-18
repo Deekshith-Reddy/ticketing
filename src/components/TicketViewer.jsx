@@ -71,9 +71,14 @@ export default function TicketViewer() {
             ...ticketData,
             Status: currentStatusValue.current.value
         }
-        await setDoc(doc(db, "tickets", ticketData.id), updatedData)
+        try {
+            await setDoc(doc(db, "tickets", ticketData.id), updatedData)
 
-        setUpdateMessage(`Successfully updated Ticket Id: ${ticketData.id}'s Status to ${currentStatusValue.current.value}`)
+            setUpdateMessage(`Successfully updated Ticket Id: ${ticketData.id}'s Status to ${currentStatusValue.current.value}`)
+        } catch (e) {
+            setUpdateMessage(e.message)
+        }
+
 
     }
 

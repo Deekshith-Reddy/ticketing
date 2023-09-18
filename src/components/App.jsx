@@ -26,7 +26,7 @@ function App() {
             <Routes>
               <Route exact path='/' Component={Dashboard}></Route>
               <Route path='/submit-ticket' Component={SubmitTicket}></Route>
-              <Route path='/update-profile' Component={UpdateProfile}></Route>
+              <Route path='/update-profile/' Component={UpdateProfile}></Route>
               <Route path='/signup' Component={Signup}></Route>
               <Route path='/login' Component={Login}></Route>
               <Route path='/forgot-password' Component={ForgotPassword}></Route>

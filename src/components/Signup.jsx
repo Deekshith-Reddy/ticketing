@@ -8,7 +8,7 @@ export default function Signup() {
     const emailRef = useRef()
     const passwordRef = useRef()
     const passwordConfirmRef = useRef()
-    const { signup, currentUser } = useAuth()
+    const { signup, currentUser, addUser } = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
@@ -23,7 +23,9 @@ export default function Signup() {
         try {
             setError('')
             setLoading(true)
-            await signup(emailRef.current.value, passwordRef.current.value)
+            const obj = await signup(emailRef.current.value, passwordRef.current.value)
+            console.log(obj.user.uid, obj.user.email)
+            await addUser(obj.user.uid, obj.user.email)
             navigate("/")
         } catch (e) {
             setError(e.message)

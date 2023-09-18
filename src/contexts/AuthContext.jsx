@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from 'firebase/auth'
-import { auth } from '../firebase'
+import { auth, db } from '../firebase'
+import { setDoc, doc } from 'firebase/firestore'
 
 const AuthContext = React.createContext()
 
@@ -39,12 +40,26 @@ export function AuthProvider({ children }) {
         return sendPasswordResetEmail(auth, email)
     }
 
+    async function addUser(userId, email) {
+        const data = {
+            userId: userId,
+            email: email,
+            role: '',
+            firstName: '',
+            lastName: ''
+        }
+
+        return await setDoc(doc(db, "users", userId), data)
+
+    }
+
     const value = {
         currentUser,
         login,
         logout,
         signup,
-        resetPassword
+        resetPassword,
+        addUser
     }
 
     return (
